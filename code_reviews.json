@@ -1,0 +1,31 @@
+[
+  {
+    "prompt": "Write a function to compute factorial",
+    "response": "def factorial(n):\n if n == 0:\n  return 1\n return n * factorial(n-1)",
+    "issues": [
+      "Fails for negative inputs",
+      "No input validation",
+      "Recursion may cause stack overflow for large n"
+    ],
+    "edge_cases": [
+      "n = -1",
+      "n = 1000"
+    ],
+    "score": 3,
+    "corrected_version": "def factorial(n):\n if not isinstance(n, int) or n < 0:\n  raise ValueError('n must be non-negative integer')\n result = 1\n for i in range(2, n+1):\n  result *= i\n return result"
+  },
+  {
+    "prompt": "Check if a string is a palindrome",
+    "response": "def is_palindrome(s): return s == s[::-1]",
+    "issues": [
+      "Does not handle case sensitivity",
+      "Does not ignore spaces"
+    ],
+    "edge_cases": [
+      "\"Racecar\"",
+      "\"A man a plan a canal Panama\""
+    ],
+    "score": 4,
+    "corrected_version": "def is_palindrome(s):\n s = ''.join(s.lower().split())\n return s == s[::-1]"
+  }
+]
